@@ -1,0 +1,242 @@
+{
+  "name": "Transport University",
+  "head": "TSTU",
+  "teachers": "Teachers",
+  "back": "Back",
+  "header": {
+    "talaba": "Student",
+    "xodim": "Staff",
+    "kutubxona": "Library",
+    "alumni": "Alumni",
+    "qidiruv": "Search",
+    "sym": "State symbols"
+  },
+  "news": {
+    "title": "University News",
+    "btn": "View All",
+    "t": "Video Highlights from Events",
+    "u": "University News",
+    "b": "All"
+  },
+  "events": {
+    "title": "Upcoming Events"
+  },
+  "interactive": {
+    "title": "Interactive Services",
+    "btn": "View All",
+    "desc": "Make effective use of the university's interactive services!",
+    "schedule": "Class schedule"
+  },
+  "faculties": {
+    "title": "Faculties and Departments",
+    "btn": "View All",
+    "kafedra": "Departments",
+    "all": "Faculties",
+    "in": "faculty"
+  },
+  "talim": {
+    "title": "Education",
+    "desc": "A thought that receives good education becomes as sharp as a dagger or diamond.",
+    "btn": "View All"
+  },
+  "honory": {
+    "title": "Honorary Professors"
+  },
+  "student": {
+    "title": "Student Life",
+    "desc": "The university provides many opportunities for students to spend their time meaningfully.",
+    "btn": "View All"
+  },
+  "survery": {
+    "title": "Surveys",
+    "btn": "View All Surveys",
+    "1": "Sicentific centers",
+    "2": "Library",
+    "3": "Books",
+    "markaz": "Making discoveries is important for our world, health, and intellectual life.",
+    "kutubxona": "The library is a place where people read, learn, conduct research, and discover new ideas.",
+    "kitob": "A book is the best friend that expands a person's knowledge, enriches imagination, and enhances life."
+  },
+  "centers": {
+    "title": "Research Centers",
+    "desc": "Making discoveries is important for our world, health, and intellectual life.",
+    "btn": "View All",
+    "kop": "Learn more",
+    "centers": "Centers"
+  },
+  "alumni": {
+    "title": "Honorary Alumni",
+    "desc": "Today, many university graduates hold leadership positions in Uzbekistan's ministries, agencies, and legislative bodies, and are successfully working in leading international organizations and large companies around the world.",
+    "btn": "View All"
+  },
+  "about": {
+    "title": "About Transport University",
+    "desc": "The system for training highly qualified personnel for the republic's transport sector has been fundamentally improved based on advanced foreign experience and international standards, by widely introducing innovative teaching methods and modern pedagogical and information technologies into the educational process, as well as strengthening the material and technical base and increasing the scientific potential of sectoral educational institutions.",
+    "talaba": "Number of students",
+    "professor": "Professors and teachers",
+    "doktarant": "Doctorants",
+    "yonalish": "Specialities",
+    "qoshimcha": "Additional education",
+    "fakultet": "Faculties"
+  },
+  "footer": {
+    "title": "Transport University",
+    "desc": "Students are our main strength. Therefore, if we want to introduce something new at our university, we always consult with them.",
+    "loc": "1 Temiryolchilar Street, Mirobod District, Tashkent",
+    "take": "Take location",
+    "about": {
+      "title": "About Us",
+      "home": "Home",
+      "biz": "About Us",
+      "talim": "Education",
+      "bitirvchi": "Graduate",
+      "manaviyat": "Spirituality",
+      "qabul": "Admission Commission"
+    },
+    "links": {
+      "title": "Links",
+      "xoldim": "Hemis Staff",
+      "talaba": "Hemis Student",
+      "kutubxona": "Library",
+      "mail": "Corp Mail",
+      "jurnal": "TSTU Journal",
+      "moodle": "Moodle"
+    }
+  },
+  "facultet": {
+    "btn": "Learn more about the Faculty",
+    "about": "About the Faculty.",
+    "dekan": "Faculty Dean.",
+    "orin": "Deputy Deans of the Faculty",
+    "kafedra": "Departments",
+    "markaz": "Research Centers",
+    "bakalavr": "Undergraduate Programs",
+    "magistr": "Master's Programs",
+    "links": {
+      "link1": "About the Faculty",
+      "link2": "Departments",
+      "link3": "Centers"
+    }
+  },
+  "kafedra": {
+    "btn": "Learn more about the department",
+    "about": "About the department.",
+    "mudir": "Head of the department.",
+    "teachers": "Faculty members of the department.",
+    "bakalavr": "Bachelor's programs",
+    "magistr": "Master's programs",
+    "links": {
+      "link1": "About the department",
+      "link2": "Programs"
+    }
+  },
+  "employee": {
+    "bio": "Biography",
+    "fio": "Full Name",
+    "birth": "Date of Birth",
+    "deg": "Degree",
+    "ex": "Experience",
+    "tel": "Phone",
+    "address": "Address",
+    "lang": "Languages",
+    "uz": "Uzbek",
+    "en": "English",
+    "ru": "Russian",
+    "ilm": "SCIENTIFIC ACTIVITY",
+    "portfolio": "Portfolio",
+    "appeal": "Submit an Appeal",
+    "name": "Your Name",
+    "email": "Email",
+    "subject": "Your Profession",
+    "message": "Your Message",
+    "bottom": "All Rights Reserved 2024"
+  },
+  "login": {
+    "title": "Log in!",
+    "login": "Email or phone number",
+    "pw": "Password",
+    "forgot": "Forgot your password?",
+    "btn": "Log in"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "desc": "The more you work for something, the bigger you'll feel when you achieve it.",
+    "btn": "Send"
+  },
+  "galereya": {
+    "link1": "Category",
+    "link2": "3D Gallery",
+    "link3": "From Events",
+    "link4": "General",
+    "title": "Life at the Transport University in Pictures",
+    "desc": "Pictures from the life at the Transport University",
+    "t1": "Selected Pictures",
+    "t2": "3D Pictures",
+    "t3": "From Events",
+    "t4": "General",
+    "btn": "3D Tour of the University"
+  },
+  "history": "Our history",
+  "elon": "Announcements",
+  "structure": "STRUCTURE OF TASHKENT STATE TRANSPORT UNIVERSITY",
+  "rectorat": "Rectorate",
+  "appeal": {
+    "res1": "raqamli murojaatga javob berilgan",
+    "res2": "raqamli murojaat ko‘rib chiqilmoqda",
+    "title1": "Rector of Tashkent State Transport University",
+    "title2": "Odil Kalandarovich Abdurakhmanov",
+    "title3": "Virtual Reception",
+    "btn1": "Submit an Appeal",
+    "btn2": "Check Appeal Status",
+    "btn3": "Public Offer",
+    "desc": "Do you have unresolved issues, problems, applications, complaints, or suggestions? If so, you can send your appeal directly to the Rector of Tashkent State Transport University.",
+    "btn": "Send",
+    "email": "Enter your email address to check the status of your appeal",
+    "oferma": "Dear User!",
+    "top": "You are being given the opportunity to send appeals directly to the Rector of Tashkent State Transport University electronically. We would also like to remind you that your appeal has official status.",
+    "start": "Therefore, please remember the following:",
+    "li1": "If you submit an appeal as an individual, you must provide your last name (first name, middle name), information about your place of residence, and the essence of your appeal. If you submit an appeal as a legal entity, you must provide the full name of the legal entity, its location (postal address), and the essence of the appeal.",
+    "li2": "Pay special attention! It is prohibited to submit appeals containing slander, abusive language, or false information.",
+    "li3": "We would also like to remind you that your appeals may be rejected in the following cases:",
+    "li4": "appeals with inappropriate content (obscene or abusive language, threats, nonsensical proposals, and similar appeals);",
+    "li5": "appeals containing unclear abbreviations or advertising materials, and appeals that do not contain specific applications, complaints, or proposals.",
+    "li6": "Additionally, repeated appeals on the same issue that have already been answered, without new arguments or circumstances, will not be considered.",
+    "bottom": "All these conditions are established based on the current legislation of the Republic of Uzbekistan."
+  },
+  "department": {
+    "b": "Departments"
+  },
+  "oav": "Media is about us",
+  "lab": "Educational laboratory",
+
+  "Brm": {
+    "title": "SUSTAINABLE DEVELOPMENT GOALS",
+    "desc": "The Sustainable Development Goals, known as the Global Goals as well, are a universal call to action to eradicate poverty, protect the planet, and bring peace and prosperity to all people. The goals were approved by all UN member states, including Uzbekistan, in September 2015. They include 17 goals and 169 targets to be achieved by 2030."
+  },
+  "Aboutus": {
+    "title": "Main Information",
+    "desc": "The Institute aims to enhance the system of preparing highly qualified specialists for the transport industry of the Republic of Uzbekistan based on international best practices and standards, introduce innovative forms and methods of education, modern pedagogical and information technologies, strengthen the material and technical base of transport education institutions, and further enhance their scientific potential: Ministry of Transport of the Republic of Uzbekistan, Ministry of Higher and Secondary Specialized Education, and the Uzbekistan Railways Joint Stock Company under the Decree No. PQ-4703 of the President of the Republic of Uzbekistan dated May 4, 2020.",
+    "title1": "University:",
+    "data1": "<p>- It is the leading higher education institution for training, retraining, and enhancing the qualifications of highly educated specialists and scientific personnel for the transport sector;</p> <p>- Gradually introduces the credit-module system of education in accordance with advanced international education standards and curricula starting from the 2020/2021 academic year;</p> <p>- Subordinate to the Ministry of Transport of the Republic of Uzbekistan.</p>",
+    "title2": "Main tasks and activities of the University:",
+    "data2": "<p>- Training, retraining, and enhancing the qualifications of competitive highly educated specialists and scientific-pedagogical personnel, as well as mass profession specialists, based on the needs of the transport sector and the labor market</p> <p>- Conducting fundamental, practical, and innovative research and studies on urgent issues of transport sector development, and developing proposals for the widespread implementation of their results, including digital and other modern technologies</p> <p>- Implementing joint educational programs and scientific projects, enhancing the qualifications of the University's professors and teachers, and organizing the education of graduates in master's and doctoral programs abroad in cooperation with leading foreign higher education and scientific institutions</p> <p>- Creating a continuous system of personnel training for the transport sector, ensuring the continuity and coherence of the educational programs of academic lyceums and professional educational institutions in the sector</p> <p>- Ensuring the practical connection of theoretical training in the educational process by organizing student internships in relevant sector organizations in cooperation with transport sector organizations, and establishing targeted cooperation to employ graduates</p>"
+  },
+  "Mdirections": {
+    "title": "Educational Specialties"
+  },
+  "Bdirections": {
+    "title": "Educational Directions",
+    "btn": "More",
+    "fak": "Faculty:",
+    "dep": "Department code:",
+    "dd1": "Language of instruction",
+    "dd2": "Contract",
+    "dd3": "Scholarship",
+    "dd4": "Part-time education",
+    "dd5": "Full-time education",
+    "dd6": "Distance education"
+  },
+  "College": {
+    "title": "Technical Colleges"
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "name": "Transport Universiteti",
+  "head": "TDTU",
+  "teachers": "O‘qtuvchilar",
+  "back": "Orqaga",
+  "header": {
+    "talaba": "Talaba",
+    "xodim": "Xodim",
+    "kutubxona": "Elektron Kutubxona",
+    "alumni": "Alumni",
+    "qidiruv": "Qidiruv",
+    "sym": "Davlat Ramzlari"
+  },
+  "news": {
+    "title": "Universitet yangiliklari",
+    "btn": "Barchasini ko‘rish",
+    "t": "Tadbirlardan video lavhalar",
+    "u": "Universitet yangiliklari",
+    "b": "Barchasi"
+  },
+  "events": {
+    "title": "Kutilyotgan tadbirlar"
+  },
+  "interactive": {
+    "title": "Interaktiv xizmatlar",
+    "btn": "Barchasini ko‘rish",
+    "desc": "Universitet interaktiv xizmatlaridan unumli foydalaning!",
+    "schulde": "Dars jadvali"
+  },
+  "faculties": {
+    "title": "Fakultet va kafedralar",
+    "btn": "Barchasini ko‘rish",
+    "kafedra": "Kafedralar",
+    "all": "Fakultetlar",
+    "in": "fakulteti"
+  },
+  "talim": {
+    "title": "Ta’lim",
+    "desc": "Fikr agar yaxshi tarbiyat topsa, Xanjar, olmosday bo’lur o’tkir.",
+    "btn": "Barchasini ko‘rish"
+  },
+  "honory": {
+    "title": "Faxriy professor-o‘qituvchilar"
+  },
+  "student": {
+    "title": "Talabaning hayoti",
+    "desc": "Universitetda talabalar o'z vaqtlarini mazmunli o'tkazishlari uchun ko'plab sharoitlar yaratilgan",
+    "btn": "Barchasini ko‘rish"
+  },
+  "survery": {
+    "title": "Tadqiqotlar",
+    "btn": "Barcha tadqiqotlarni ko‘rish",
+    "1": "Ilmiy markazlar",
+    "2": "Kutubxona",
+    "3": "Kitoblar",
+    "markaz": "Kashfiyotlar qilish bizning dunyomiz, sog'ligimiz va intellektual hayotimiz uchun muhimdir",
+    "kutubxona": "Kutubxona o‘qish, o‘rganish, va tadqiqotlar olib boradigan, yangi g‘oyalarni kashf etadigan maskan.",
+    "kitob": "Kitob insonning bilimlarini kengaytiradigan, tasavvurini boyitadigan va hayotini boyitadigan eng yaxshi do‘stdir."
+  },
+  "centers": {
+    "title": "Ilmiy markazlar",
+    "desc": "Kashfiyotlar qilish bizning dunyomiz, sog'ligimiz va intellektual hayotimiz uchun muhimdir",
+    "btn": "Barchasini ko‘rish",
+    "kop": "Ko‘proq malumot olish",
+    "centers": "Markazlar"
+  },
+  "alumni": {
+    "title": "Faxriy bitiruvchilar",
+    "desc": "Bugungi kunda universitetning ko'plab bitiruvchilari O'zbekiston vazirliklari, idoralari va qonun chiqaruvchi organlarida rahbarlik lavozimlarini egallab,dunyoning yetakchi xalqaro tashkilotlari va yirik kompaniyalarida muvaffaqiyatli faoliyat yuritmoqdalar",
+    "btn": "Barchasini ko‘rish"
+  },
+  "about": {
+    "title": "Transport Universiteti haqida",
+    "desc": " Respublika transport sohasi uchun yuqori malakali kadrlarni tayyorlash tizimini ilgʻor xorijiy tajriba va xalqaro standartlar asosida tubdan takomillashtirish, oʻquv jarayoniga oʻqitishning innovatsion shakl va metodlari hamda zamonaviy pedagogik va axborot texnologiyalarini keng joriy etish, shuningdek, tarmoq taʼlim muassasalarining moddiy-texnika bazasini mustahkamlash va ilmiy salohiyatini yanada oshirish maqsadida tashkil etilgan.",
+    "talaba": "Talabalar soni",
+    "professor": "Professor-o’qituvchilar",
+    "doktarant": "Doktorantlar",
+    "yonalish": "Ta'lim yonalishlari",
+    "qoshimcha": "Qoshimcha ta'lim",
+    "fakultet": "Fakultetlar"
+  },
+  "footer": {
+    "title": "Transport Universiteti",
+    "desc": "Talaba - bizning asosiy kuchimiz. Shu bois universitetimizda biror yangilik qilmoqchi bо‘lsak, albatta, ular bilan fikrlashamiz kerak.",
+    "loc": "Toshkent shahar Mirobod tumani Temiryo‘lchilar ko‘chasi 1-uy",
+    "take": "Manzilni olish",
+    "about": {
+      "title": "Biz haqimizda",
+      "home": "Bosh sahifa",
+      "biz": "Biz haqimizda",
+      "talim": "Ta'lim",
+      "bitirvchi": "Bitiruvchi",
+      "manaviyat": "Manaviyat",
+      "qabul": "Qabul komissiyasi"
+    },
+    "links": {
+      "title": "Havolalar",
+      "xoldim": "Hemis Xodim",
+      "talaba": "Hemis talaba",
+      "kutubxona": "Kutubxona",
+      "mail": "Corp mail",
+      "jurnal": "Jurnal TSTU",
+      "moodle": "Moodle"
+    }
+  },
+  "facultet": {
+    "btn": "Fakultet haqida batafsil bilish",
+    "about": "Fakultet haqida.",
+    "dekan": "Fakultet dekani.",
+    "orin": "Fakultet dekani o‘rinbosarlari",
+    "kafedra": "Kafedralar",
+    "markaz": "Ilmiy markazlar",
+    "bakalavr": "Bakalavr yo‘nalishlari",
+    "magistr": "Magistratura  yo‘nalishlari",
+    "links": {
+      "link1": "Fakultet haqida",
+      "link2": "Kafedralar",
+      "link3": "Markazlar"
+    }
+  },
+  "kafedra": {
+    "btn": "Kafedra haqida batafsil bilish",
+    "about": "Kafedra haqida.",
+    "mudir": "Kafedra mudiri.",
+    "teachers": "Kafedra professor o‘qtuvchilari tarkibi.",
+    "bakalavr": "Bakalavr yo‘nalishlari",
+    "magistr": "Magistratura  yo‘nalishlari",
+    "links": {
+      "link1": "Kafedra haqida",
+      "link2": "Yo'nalishlar"
+    }
+  },
+  "employee": {
+    "bio": "Biografiya",
+    "fio": "F.I.O",
+    "birth": "Tavallud kuni",
+    "deg": "Darajasi",
+    "ex": "Tajriba",
+    "tel": "Telefon",
+    "address": "Manzil",
+    "lang": "Tillar",
+    "uz": "O'zbek tili",
+    "en": "Ingliz tili",
+    "ru": "Rus tili",
+    "ilm": "ILMIY FAOLIYAT",
+    "portfolio": "Portfolio",
+    "appeal": "Murojaat yuboring",
+    "name": "Ismingiz",
+    "email": "Email",
+    "subject": "Kasbingiz",
+    "message": "Xabaringiz",
+    "bottom": "Barcha huquqlar himoyalangan 2024"
+  },
+  "login": {
+    "title": "Tizimga kirish!",
+    "login": "Email yoki telefon raqam",
+    "pw": "Parol",
+    "forgot": "Parolni unutdingizmi?",
+    "btn": "Kirish"
+  },
+  "contact": {
+    "title": "Biz bilan bog'lanish",
+    "desc": "Biror narsa uchun qanchalik ko'p mehnat qilsangiz, unga erishganingizda o'zingizni shunchalik katta his qilasiz.",
+    "btn": "Yuborish"
+  },
+  "galereya": {
+    "link1": "Kategoriya",
+    "link2": "3D galereya",
+    "link3": "Tadbirlardan",
+    "link4": "Umumiy",
+    "title": "Transport Universiteti hayoti rasmlarda",
+    "desc": "Transport Universiteti hayoti rasmlaridan",
+    "t1": "Sara rasmlar",
+    "t2": "3D rasm",
+    "t3": "Tadbirlardan",
+    "t4": "Umumiy",
+    "btn": "universitetga 3d sayohat"
+  },
+  "history": "Bizning tarix",
+  "elon": "E'lonlar",
+  "structure": "TOSHKENT DAVLAT TRANSPORT UNIVERSITETI TUZILMASI",
+  "rectorat": "Rektorat",
+  "appeal": {
+    "title1": "Toshkent davlat Transport universiteti rektori",
+    "title2": "Abduraxmonov Odil Kalandarovich",
+    "title3": "virtual qabulxonasi",
+    "btn1": "Murojat yuborish",
+    "btn2": "Murojatni tekshirish",
+    "btn3": "Ommaviy offerta",
+    "desc": "Sizda hal etilmagan masalalar, muammolar, ariza, shikoyat yoki takliflar bormi? U holda murojaatingizni to‘g‘ridan-to‘g‘ri Toshkent davlat transport universiteti rektoriga yuborishingiz mumkin.",
+    "btn": "Yuborish",
+    "email": "Murojatni tekshirish uchun elektron pochta manjilingizni kiriting",
+    "oferma": "Hurmatli foydalanuvchi!",
+    "top": "Sizga Toshkent davlat transport universiteti rektoriga bevosita elektron tarzda murojaatlarni yuborish imkoniyati taqdim etilmoqda. Shu bilan birga, sizning yuborayotgan murojaatingiz rasmiy maqomga ega ekanligini ham eslatib qo‘ymoqchimiz.",
+    "start": "Shu sababli, sizdan quyidagilarni unutmasligingizni so‘raymiz:",
+    "li1": "Jismoniy shaxs sifatida murojaat yo‘llasangiz familiyangiz (ismingiz, otangizning ismi), yashash joyingiz to‘g‘risidagi ma’lumotlar ko‘rsatilgan va murojaatingiz mohiyati bayon etilgan bo‘lishi shart.  Yuridik shaxs sifatida murojaat yo‘llasangiz yuridik shaxsning to‘liq nomi, uning joylashgan joyi (pochta manzili) to‘g‘risidagi ma’lumotlar ko‘rsatilgan va murojaatning mohiyati bayon etilishi talab etiladi.",
+    "li2": "Alohida e’tibor bering! Tuhmat, haqorat so‘zlar ishlatilgan va yolg‘on xabar beruvchi murojaatlarni taqdim etish mumkin emas.",
+    "li3": "Shuningdek, quyidagi holatlarda murojaatlaringiz rad etilishi mumkinligini eslatib o‘tmoqchimiz:",
+    "li4": "odobsizlik mazmunidagi murojaatlar (uyatsiz yoxud haqoratli iboralar, tahdidlar, mantiq va ma’nosi bo‘lmagan takliflar va shunga o‘xshash murojaatlar);",
+    "li5": "murojaat matnida tushunarsiz qisqartirishlar yoki reklama materiallari mavjud bo‘lgan, tarkibida aniq arizalar, shikoyatlar yoki takliflar bo‘lmagan murojaatlar.",
+    "li6": "Shuningdek, foydalanuvchining bir necha bor bitta masala bo‘yicha javob berilgan murojaatini qayta yuborilganda, agar unda yangi vajlar yoki holatlar keltirilmagan bo‘lsa, ko‘rib chiqilmaydi.",
+    "bottom": "Mazkur shartlarning barchasi O‘zbekiston Respublikasining amaldagi qonunchiligidan kelib chiqqan holda belgilangan."
+  },
+  "department": {
+    "b": "Bo'limlar"
+  },
+  "oav": "OAV biz haqimizda",
+  "lab": "O'quv Laboratoriya",
+  "Brm": {
+    "title": "BARQAROR RIVOJLANISH MAQSADLARI",
+    "desc": "Barqaror Rivojlanish Maqsadlari, yoki Global Maqsadlar deb nomlanuvchi qashshoqlikni yoʻq qilish, sayyorani himoya qilish va barcha odamlarga tinchlik va farovonlik olib kelishga qaratilgan universal choralardir. Maqsadlar BMTga aʼzo barcha davlatlar, shu jumladan, Oʻzbekiston tomonidan 2015 yil sentyabr oyida maʼqullangan. Ularga 2030 yilga qadar erishilishi kerak boʻlgan 17 ta maqsad va 169 ta vazifalar kiritilgan."
+  },
+  "Aboutus": {
+    "title": "Asosiy ma`lumotlar",
+    "desc": "Respublika transport sohasi uchun yuqori malakali kadrlarni tayyorlash tizimini ilgʼor xorijiy tajriba va xalqaro standartlar asosida tubdan takomillashtirish, oʼquv jarayoniga oʼqitishning innovatsion shakl va metodlari hamda zamonaviy pedagogik va axborot texnologiyalarini keng joriy etish, shuningdek, tarmoq taʼlim muassasalarining moddiy-texnika bazasini mustahkamlash va ilmiy salohiyatini yanada oshirish maqsadida: Oʼzbekiston Respublikasi Transport vazirligi, Oliy va oʼrta maxsus taʼlim vazirligi hamda «Oʼzbekiston temir yoʼllari» aksiyadorlik jamiyatining Toshkent temir yoʼl muhandislari instituti, Toshkent avtomobil yoʼllarini loyihalash, qurish va ekspluatatsiyasi instituti hamda Toshkent davlat texnika universitetining aviakosmik texnologiyalari fakulteti negizida Toshkent davlat transport universitetini Oʼzbekiston respublikasi Prezidentining 2020 yil 4 – maydagi PQ-4703 sonli Qaroriga muvofik tashkil etilgan.",
+
+    "title1": "Universitet:",
+    "data1": "<p> -Transport sohasi uchun oliy maʼlumotli mutaxassislar va ilmiy kadrlarni tayyorlash, qayta tayyorlash va ularning malakasini oshirish boʼyicha tayanch oliy taʼlim muassasasi hisoblanadi;</p> <p> -Ilgʼor xalqaro taʼlim standartlari hamda oʼquv dasturlariga muvofiq 2020/2021 oʼquv yilidan boshlab taʼlimning kredit-modul tizimini bosqichma-bosqich joriy etadi;</p> <p> -Oʼzbekiston Respublikasi Transport vazirligiga idoraviy jihatdan boʼysunadi.</p>",
+    "title2": "Universitetning asosiy vazifalari va faoliyati yoʼnalishlari:",
+    "data2": "<p> - transport sohasi ehtiyojlaridan kelib chiqib, mehnat bozoridagi raqobatbardosh oliy maʼlumotli mutaxassislar va ilmiy-pedagogik kadrlarni, shuningdek, ommaviy kasb mutaxassislarini tayyorlash, qayta tayyorlash va ularning malakasini oshirish</p> <p> - transport sohasini rivojlantirishning dolzarb masalalari boʼyicha fundamental, amaliy va innovatsion izlanish va tadqiqotlar olib borish, ularning natijalarini, shu jumladan raqamli va boshqa zamonaviy texnologiyalarni keng joriy etish boʼyicha takliflar ishlab chiqish</p> <p> - qoʼshma taʼlim dasturlari va ilmiy loyihalarni amalga oshirish, Universitet professor-oʼqituvchilarining malakasini oshirishni hamda bitiruvchilarni chet elda magistratura va doktorantura dasturlari boʼyicha tahsil olishlarini tashkil etish maqsadida yetakchi xorijiy oliy taʼlim va ilmiy muassasalar bilan hamkorlikni rivojlantirish</p> <p> - transport sohasi uchun kadrlar tayyorlashning uzluksiz tizimini yaratish, tizimdagi akademik litsey hamda sohaning professional taʼlim muassasalari taʼlim dasturlarining uzluksizligi va uzviyligini taʼminlash</p> <p> - oʼquv jarayonida nazariy tayyorgarlikning amaliyot bilan uzviy bogʼliqligini taʼminlash maqsadida transport sohasidagi tashkilotlar bilan birgalikda talabalarning amaliyotlarini tegishli soha tashkilotlarida tashkil etish, bitiruvchilarni ish bilan taʼminlash boʼyicha maqsadli hamkorlikni yoʼlga qoʼyish </p>"
+  },
+  "Mdirections": {
+    "title": "Ta’lim mutaxassisliklari"
+  },
+  "Bdirections": {
+    "title": "Ta’lim yо‘nalishlari",
+    "btn": "Batafsil",
+    "fak": "Fakultet:",
+    "dep": "Yo‘nalish shifri:",
+    "dd1": "Ta‘lim tili",
+    "dd2": "Kontrakt",
+    "dd3": "Stipendiya",
+    "dd4": "Sirtqi ta‘lim",
+    "dd5": "Kunduzgi ta‘lim",
+    "dd6": "Masofaviy ta‘lim"
+  },
+  "College": {
+    "title": "Texnikumlar"
+  }
+}

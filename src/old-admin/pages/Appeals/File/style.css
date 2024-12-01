@@ -1,0 +1,121 @@
+.body {
+  margin: 0;
+}
+
+.body .sheet {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  page-break-after: always;
+}
+
+.body.A4 .sheet {
+  width: 210mm;
+  min-height: 296mm;
+}
+.body.A4.landscape .sheet {
+  width: 297mm;
+  height: 209mm;
+}
+.body .sheet.padding-10mm {
+  padding: 15mm 15mm 10mm 30mm;
+}
+
+@media screen {
+  .body {
+    background: #e0e0e0;
+    min-height: 100dvh;
+    padding: 10px;
+  }
+
+  .body .sheet {
+    background: white;
+    box-shadow: 0 0.5mm 2mm rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+  }
+}
+
+@media print {
+  .body.A4 {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+  }
+
+  .body .sheet.A4.padding-10mm {
+    padding: 10mm;
+  }
+
+  .body .no-print {
+    display: none !important;
+  }
+}
+
+.body p {
+  margin: 2px 0px 2px 0px;
+  font-size: 13px;
+  font-family: Times New Roman Cyr;
+  text-indent: 3px;
+}
+
+.body table {
+  /* table-layout: fixed; */
+  border-collapse: collapse;
+  /* width: 100%; */
+}
+
+.body td,
+.body th {
+  font-family: Times New Roman Cyr;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0px !important;
+  overflow: hidden;
+  padding: 2px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.body .tsolid {
+  border-top: 1px solid black;
+}
+
+.body .rsolid {
+  border-right: 1px solid black;
+}
+
+.body .bsolid {
+  border-bottom: 1px solid black;
+}
+
+.body .lsolid {
+  border-left: 1px solid black;
+}
+
+.body .bl {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.body .tbl {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.body .b-all {
+  border: 1px solid black;
+}
+
+.body .b-o {
+  border: 0px;
+}
+
+.body .td-l {
+  font-family: Times New Roman Cyr;
+  font-size: 15px;
+  font-weight: normal;
+  padding: 2px;
+  text-align: left !important;
+}

@@ -1,0 +1,69 @@
+.ant-popover-content {
+  width: 250px;
+}
+
+.ant-popover-content button {
+  padding: 0 15px;
+  height: 35px;
+  font-size: 16px;
+}
+
+.ant-popconfirm-title {
+  font-size: 24px;
+}
+
+.ant-popconfirm-description {
+  font-size: 18px;
+}
+
+.ant-popconfirm-message-icon svg {
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+}
+
+.ant-select-selector {
+  border-radius: 3px !important;
+}
+
+.ant-select {
+  /* height: 37px; */
+}
+
+.carousel-item img {
+  width: 100%;
+  object-fit: cover; /* Ensure the image covers the entire area */
+}
+
+@media (min-width: 992px) {
+  /* Desktop */
+  .carousel-item img {
+    height: 700px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Tablet */
+  .carousel-item img {
+    height: 500px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Mobile */
+  .carousel-item img {
+    height: 400px;
+  }
+}
+.ant-collapse-header-text {
+  font-size: 18px;
+
+  font-weight: 500;
+}
+.ant-collapse {
+  border-radius: 3px !important;
+}
+
+.ant-collapse-expand-icon svg {
+  font-size: 16px !important;
+}

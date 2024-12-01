@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TSTU</title>
+    <link rel="icon" href="/logo.png" />
+    <link rel="stylesheet" href="/lib/bvi/bvi.min.css" type="text/css" />
+    <style>
+      .c-showcase {
+        height: calc(100vh - 50px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-image: url("./src/assets/images/image.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        z-index: -1;
+      }
+
+      .c-wrappr {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 110px;
+      }
+
+      .c-title {
+        font-family: "Times New Roman", Times;
+        font-size: 90px !important;
+        color: #fff;
+        letter-spacing: 2px;
+        white-space: nowrap;
+        font-weight: 700;
+      }
+
+      .c-desktop-title {
+        width: 100%;
+        height: auto;
+      }
+
+      .c-mobile-title {
+        display: none;
+      }
+
+      @media screen and (max-width: 1200px) {
+        .c-title {
+          font-size: 60px !important;
+        }
+      }
+      @media screen and (max-width: 1000px) {
+        .c-showcase {
+          height: calc(100vh - 112px);
+        }
+      }
+      @media screen and (max-width: 900px) {
+        .c-wrapper {
+          padding: 0 70px;
+        }
+      }
+      @media screen and (max-width: 850px) {
+        .c-title {
+          font-size: 50px !important;
+          white-space: normal;
+          text-align: center;
+        }
+      }
+      @media (max-width: 650px) {
+        .c-title {
+          width: 400px;
+        }
+        .c-desktop-title {
+          display: none;
+        }
+        .c-mobile-title {
+          display: block;
+        }
+      }
+      @media screen and (max-width: 500px) {
+        .c-showcase {
+          height: calc(100vh - 100px);
+        }
+      }
+      @media (max-width: 450px) {
+        .c-title {
+          width: 350px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script src="/lib/bvi/bvi.min.js"></script>
+  </body>
+</html>
