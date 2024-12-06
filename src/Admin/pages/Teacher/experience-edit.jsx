@@ -1,41 +1,36 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Input, Select } from "../../components/Generics";
 import LanguageSelect from "../../components/Generics/LanguageSelect";
 import { useLanguageContext } from "../../..//context/LanguageContext";
 import { useParams } from "react-router-dom";
 import Wrapper from "../../components/wrapper";
-import { message } from "antd";
+import {
+  Button,
+  Col,
+  Form,
+  InputNumber,
+  message,
+  Row,
+  Input,
+  Select,
+} from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useEdit } from "../../hooks/useEdit";
+import { useStatusContext } from "../../context/Status";
 
 const Edit = () => {
   const [value, setValue] = useState("uz");
   const [isCreate, setIsCreate] = useState(false);
   const [transId, setTransId] = useState(null);
-
-  const startRef = useRef();
-  const endRef = useRef();
-  const whomRef = useRef();
-  const whereRef = useRef();
+  const { statusData, getStatus } = useStatusContext();
 
   const { options } = useLanguageContext();
   const { id } = useParams();
+  const [form] = Form.useForm();
 
   const language_id = options.find((option) => option.code === value)?.id;
 
   const onHandleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (
-      !startRef.current?.value &&
-      !whomRef.current?.value &&
-      !whereRef.current?.value
-    ) {
-      message.error("Barcha ma'lumotlarni kiritish kerak!");
-      return;
-    }
-
     const res = await useEdit(
       isCreate,
       value,
@@ -43,10 +38,12 @@ const Edit = () => {
       id,
       transId,
       {
-        since_when: Number(startRef.current?.value),
-        until_when: Number(endRef.current?.value),
-        whom: whomRef.current?.value,
-        where: whereRef.current?.value,
+        person_data_id: Number(id),
+        since_when: Number(e.since_when),
+        until_when: Number(e.until_when),
+        whom: e.whom,
+        where: e.where,
+        status: e.status,
       },
       `${
         import.meta.env.VITE_BASE_URL_API
@@ -58,7 +55,7 @@ const Edit = () => {
         {
           person_scientific_activity_id: Number(id),
         },
-        { status_translation_id: status },
+        {},
         { language_id },
       ],
       ["status_id"],
@@ -98,63 +95,81 @@ const Edit = () => {
     if (res.data.id !== 0) {
       setIsCreate(false);
       setTransId(res?.data?.id);
-      startRef.current.value = res?.data?.since_when;
-      endRef.current.value = res?.data?.until_when;
-      whomRef.current.value = res?.data?.whom;
-      whereRef.current.value = res?.data?.where;
+      form.setFieldsValue({
+        since_when: res?.data?.since_when,
+        until_when: res?.data?.until_when,
+        whom: res.data.whom,
+        where: res.data.where,
+        status: res.data.status_?.id || res.data.status_translation_?.id,
+      });
     } else {
       setIsCreate(true);
-      whomRef.current.value = "";
-      whereRef.current.value = "";
+      form.resetFields();
     }
   };
 
   useEffect(() => {
     getData(id, value);
+    getStatus(value);
   }, [value, isCreate]);
 
   return (
-    <Wrapper title="Yaratish">
-      <form className="form-horizontal row" onSubmit={onHandleSubmit}>
-        <div className="col-md-12">
-          <LanguageSelect onChange={(e) => setValue(e)} />
-        </div>
-        <Input
-          className="form-group col-md-2"
-          label={`Boshlagan yili (${value})`}
-          type="number"
-          ref={startRef}
-        />
-        <Input
-          className="form-group col-md-2"
-          label={`Tugatgan yili (${value})`}
-          type="number"
-          ref={endRef}
-        />
-        <Input
-          className="form-group col-md-3"
-          ref={whomRef}
-          label={`Lavozim (${value})`}
-        />
-        <Input
-          className="form-group col-md-5"
-          ref={whereRef}
-          label={`Qayerda (${value})`}
-        />
-        <div className="form-group mt-3 col-md-12">
-          <div className="col-sm-12">
-            {isCreate ? (
-              <button type="submit" className="btn btn-success">
-                yaratish
-              </button>
-            ) : (
-              <button type="submit" className="btn btn-primary">
-                yangilash
-              </button>
-            )}
-          </div>
-        </div>
-      </form>
+    <Wrapper title={isCreate ? "Yaratish" : "Yangilash"}>
+      <Form layout="vertical" onFinish={onHandleSubmit} form={form}>
+        <Row gutter={[10, 10]}>
+          <Col span={24}>
+            <LanguageSelect onChange={(e) => setValue(e)} />
+          </Col>
+          <Col xs={24} md={isCreate ? 4 : 8}>
+            <Form.Item
+              rules={[{ required: true, message: "Required" }]}
+              name="since_when"
+              label="Boshlagan yili"
+            >
+              <InputNumber style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={isCreate ? 4 : 8}>
+            <Form.Item
+              rules={[{ required: true, message: "Required" }]}
+              name="until_when"
+              label="Tugatgan yili"
+            >
+              <InputNumber style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={8}>
+            <Form.Item
+              rules={[{ required: true, message: "Required" }]}
+              name="whom"
+              label="Lavozim"
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={8}>
+            <Form.Item
+              rules={[{ required: true, message: "Required" }]}
+              name="where"
+              label="Qayerda"
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          {!isCreate && (
+            <Col xs={24} md={8}>
+              <Form.Item name="status" label="Status">
+                <Select options={statusData} />
+              </Form.Item>
+            </Col>
+          )}
+          <Col span={24}>
+            <Button type="primary" htmlType="submit">
+              {isCreate ? "yaratish" : "yagilash"}
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     </Wrapper>
   );
 };

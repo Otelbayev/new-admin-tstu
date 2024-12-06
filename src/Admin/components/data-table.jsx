@@ -29,7 +29,7 @@ const useStyle = createStyles(({ css, token }) => {
 const DataTable = ({
   dataSource,
   loading,
-  cols,
+  cols = [],
   setIsDelete,
   del,
   edit,
@@ -71,7 +71,7 @@ const DataTable = ({
   const columns = [
     ...cols,
     {
-      title: "Action",
+      title: "Tahrirlash",
       width: 145,
       fixed: "right",
       render: (a) => {
@@ -89,8 +89,8 @@ const DataTable = ({
             </Button>
             {a.status === "Faol" && (
               <Popconfirm
-                title="Delete the task"
-                description="Are you sure to delete this task?"
+                title="Tasdiqlang"
+                description="Bu vazifani oʻchirib tashlaysizmi?"
                 onConfirm={() => handleOk(a.id)}
                 icon={
                   <QuestionCircleOutlined
@@ -113,12 +113,16 @@ const DataTable = ({
 
   return (
     <div>
-      <Input
-        placeholder="Qidirish"
-        style={{ marginBottom: "10px" }}
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-      />
+      {dataSource?.length ? (
+        <Input
+          placeholder="Qidirish"
+          style={{ marginBottom: "10px" }}
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+      ) : (
+        ""
+      )}
       <Table
         className={styles.customTable}
         pagination={true}

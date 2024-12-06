@@ -179,7 +179,6 @@ const Concil = () => {
     },
     {
       title: "Ko'rish",
-      fixed: "right",
       width: window?.innerWidth > 768 ? 200 : 80,
       dataIndex: "id",
       render: (id, data) => {

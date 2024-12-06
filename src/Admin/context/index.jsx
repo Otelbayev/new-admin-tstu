@@ -13,6 +13,11 @@ import EmployeeContextProvider from "./EmployeeContext";
 import DateContextProvider from "./DateContext";
 import BlogCacheContextProvider from "./BlogCacheContext";
 import PageCacheProvider from "./PageCacheContext";
+import IpContextProvider from "./IpContext";
+import LearningFormProvider from "./LearningForm";
+import EducationLanguageProvider from "./EducationLanguage";
+import RoomProvider from "./RoomContext";
+
 const AdminContext = ({ children }) => {
   return (
     <BlogProvider>
@@ -27,11 +32,17 @@ const AdminContext = ({ children }) => {
                       <UserContextProvider>
                         <EmployeeContextProvider>
                           <DateContextProvider>
-                            {/* cache */}
                             <BlogCacheContextProvider>
-                              <PageCacheProvider>{children}</PageCacheProvider>
+                              <PageCacheProvider>
+                                <IpContextProvider>
+                                  <LearningFormProvider>
+                                    <EducationLanguageProvider>
+                                      <RoomProvider>{children}</RoomProvider>
+                                    </EducationLanguageProvider>
+                                  </LearningFormProvider>
+                                </IpContextProvider>
+                              </PageCacheProvider>
                             </BlogCacheContextProvider>
-                            {/* cache */}
                           </DateContextProvider>
                         </EmployeeContextProvider>
                       </UserContextProvider>

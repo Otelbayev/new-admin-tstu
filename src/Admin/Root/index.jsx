@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { routes } from "../utils/router";
+import { routes } from "../routes";
 import Uni from "../components/Uni";
 import PrivateRoute from "../utils/PrivateRoute";
 import NotFound from "../pages/NotFound";

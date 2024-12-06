@@ -1,44 +1,30 @@
 import React, { useRef, useState } from "react";
-import { Input } from "../../components/Generics";
 import LanguageSelect from "../../components/Generics/LanguageSelect";
 import { useLanguageContext } from "../../..//context/LanguageContext";
 import { useCreate } from "../../hooks/useCreate";
 import { useNavigate } from "react-router-dom";
 import Wrapper from "../../components/wrapper";
-import { message } from "antd";
+import { Col, Form, InputNumber, message, Row, Input, Button } from "antd";
+import { useTranslation } from "react-i18next";
 
 const Create = () => {
   const [value, setValue] = useState("uz");
   const navigate = useNavigate();
 
-  const startRef = useRef();
-  const endRef = useRef();
-  const whomRef = useRef();
-  const whereRef = useRef();
-
   const { options } = useLanguageContext();
 
   const id = options.find((option) => option.code === value)?.id;
+  const { i18n } = useTranslation();
 
   const onHandleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (
-      !startRef.current?.value &&
-      !whomRef.current?.value &&
-      !whereRef.current?.value
-    ) {
-      message.error("Barcha ma'lumotlarni kiritish kerak!");
-      return;
-    }
     const res = await useCreate(
       value,
       "obj",
       {
-        since_when: Number(startRef.current?.value),
-        until_when: Number(endRef.current?.value),
-        whom: whomRef.current?.value,
-        where: whereRef.current?.value,
+        since_when: Number(e.since_when),
+        until_when: Number(e.until_when),
+        whom: e.whom,
+        where: e.where,
       },
       `${
         import.meta.env.VITE_BASE_URL_API
@@ -55,47 +41,61 @@ const Create = () => {
     );
     if (res.statusCode === 200) {
       value === "uz"
-        ? navigate(`/admin/experience/edit/${res.id}`)
-        : navigate("/admin/experience");
+        ? navigate(`/${i18n.language}/admin/experience/edit/${res.id}`)
+        : navigate(`/${i18n.language}/admin/experience`);
     }
   };
 
   return (
     <Wrapper title="Yaratish">
-      <form className="form-horizontal row" onSubmit={onHandleSubmit}>
-        <div className="col-md-12">
-          <LanguageSelect onChange={(e) => setValue(e)} />
-        </div>
-        <Input
-          className="form-group col-md-2"
-          label={`Boshlagan yili (${value})`}
-          type="number"
-          ref={startRef}
-        />
-        <Input
-          className="form-group col-md-2"
-          label={`Tugatgan yili (${value})`}
-          type="number"
-          ref={endRef}
-        />
-        <Input
-          className="form-group col-md-3"
-          ref={whomRef}
-          label={`Lavozim (${value})`}
-        />
-        <Input
-          className="form-group col-md-5"
-          ref={whereRef}
-          label={`Qayerda (${value})`}
-        />
-        <div className="form-group mt-3 col-md-12">
-          <div className="col-sm-12">
-            <button type="submit" className="btn btn-success">
-              Yaratish
-            </button>
-          </div>
-        </div>
-      </form>
+      <Form layout="vertical" onFinish={onHandleSubmit}>
+        <Row gutter={[10, 10]}>
+          <Col span={24}>
+            <LanguageSelect onChange={(e) => setValue(e)} />
+          </Col>
+          <Col xs={24} md={4}>
+            <Form.Item
+              rules={[{ required: true, message: "Required" }]}
+              name="since_when"
+              label="Boshlagan yili"
+            >
+              <InputNumber style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={4}>
+            <Form.Item
+              rules={[{ required: true, message: "Required" }]}
+              name="until_when"
+              label="Tugatgan yili"
+            >
+              <InputNumber style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={8}>
+            <Form.Item
+              rules={[{ required: true, message: "Required" }]}
+              name="whom"
+              label="Lavozim"
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={8}>
+            <Form.Item
+              rules={[{ required: true, message: "Required" }]}
+              name="where"
+              label="Qayerda"
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Button type="primary" htmlType="submit">
+              create
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     </Wrapper>
   );
 };

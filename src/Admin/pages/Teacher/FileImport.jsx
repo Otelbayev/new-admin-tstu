@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Collapse } from "antd";
+import { Col, Collapse, Flex, Form, Row, Select } from "antd";
 import styled from "styled-components";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Upload from "./upload-content";
-import { Select } from "../../components/Generics";
 import { useDateContext } from "../../context/DateContext";
 import { studyYears } from "../../utils/mock";
 import DownloadFile from "../../components/file-download";
 import { Helmet } from "react-helmet";
+import Wrapper from "../../components/wrapper";
 
 const getSize = (id, $italic) => {
   if (!$italic) {
@@ -138,6 +138,42 @@ const FileImport = () => {
   };
 
   const nestedItems = buildNestedItems(rawData, 0);
+
+  return (
+    <Wrapper
+      title="Pedagog xodimlarning o‘quv yilidagi faoliyatini baholash"
+      header={
+        <Form layout="vertical">
+          <Flex justify="space-around" wrap gap="10px">
+            <Form.Item label="O'quv yili">
+              <Select
+                value={old_year}
+                options={studyYears}
+                style={{ width: 150 }}
+                onChange={(e) => {
+                  setOldYear(e);
+                  setUpdateData({ name: "Jasurbek" });
+                }}
+              />
+            </Form.Item>
+            <Form.Item label="Maksimal Ball:">
+              <h4>110</h4>
+            </Form.Item>
+            <Form.Item label="To'plangan Ball:">
+              <h4> {count}</h4>
+            </Form.Item>
+            <Form.Item label="Hujjat:">
+              <DownloadFile />
+            </Form.Item>
+          </Flex>
+        </Form>
+      }
+    >
+      <Helmet>Pedagog xodimlarning o‘quv yilidagi faoliyatini baholash</Helmet>
+
+      <Collapse>{buildPanels(nestedItems)}</Collapse>
+    </Wrapper>
+  );
 
   return (
     <div>

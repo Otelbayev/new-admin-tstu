@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Cookies from "js-cookie";
-import DataTable from "../../components/DataTable";
+import DataTable from "../../components/data-table";
 import Wrapper from "../../components/wrapper";
 import useAxios from "../../../hooks/useAxios";
+import { Typography } from "antd";
+const { Text } = Typography;
 
-const Additionals = ({ title, get, del, edit }) => {
-  const { sendRequest, loading, error } = useAxios();
+const Additionals = ({ title, get, del, create }) => {
+  const { sendRequest, loading } = useAxios();
   const [data, setData] = useState([]);
   const [isDelete, setIsDelete] = useState(false);
 
@@ -26,33 +28,54 @@ const Additionals = ({ title, get, del, edit }) => {
     getData();
   }, [isDelete]);
 
-  return (
-    <Wrapper title={title} create={true}>
-      <DataTable
-        data={data}
-        loading={loading}
-        error={error}
-        del={`${import.meta.env.VITE_BASE_URL_API}${del}`}
-        edit={edit}
-        setIsDelete={setIsDelete}
-        col={[
-          { data: "id", title: "# " },
-          { data: "title", title: "Mavzu" },
-          { data: "description", title: "Izoh" },
-          {
-            data: "confirmed",
-            title: "Status",
-            render: (data) => {
-              const obj = {
-                0: "<div class='text-primary'>Jarayonda</div>",
-                1: "<div class='text-success'>Tasdiqlangan </div>",
-                2: "<div class='text-danger'>Rad etilgan </div>",
-              };
+  const dataSource = useMemo(() => {
+    return data.map((item, index) => ({
+      id: item.id,
+      index: index + 1,
+      title: item.title,
+      description: item.description,
+      confirmed: item.confirmed,
+      status: item.status_?.name,
+    }));
+  }, [data]);
 
-              return obj[data];
-            },
-          },
-        ]}
+
+
+  const cols = [
+    {
+      title: "#",
+      dataIndex: "index",
+    },
+    {
+      title: "title",
+      dataIndex: "title",
+    },
+    {
+      title: "description",
+      dataIndex: "description",
+    },
+    {
+      title: "Status",
+      render: (data) => {
+        const obj = {
+          0: <Text>Jarayonda</Text>,
+          1: <Text type="success">Tasdiqlangan</Text>,
+          2: <Text type="danger">Rad etilgan</Text>,
+        };
+
+        return obj[data.confirmed];
+      },
+    },
+  ];
+
+  return (
+    <Wrapper title={title} create={create}>
+      <DataTable
+        dataSource={dataSource}
+        loading={loading}
+        del={del}
+        cols={cols}
+        setIsDelete={setIsDelete}
       />
     </Wrapper>
   );

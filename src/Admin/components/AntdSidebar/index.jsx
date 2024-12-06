@@ -58,7 +58,7 @@ const AntdSidebar = () => {
   };
 
   useEffect(() => {
-    setPath(window.location.pathname.split("admin/")[1]);
+    setPath(window.location.pathname.split("/")[3]);
   }, []);
 
   return (
@@ -66,7 +66,7 @@ const AntdSidebar = () => {
       {!isOpen && <div className="abs-bg" onClick={() => setIsOpen(true)} />}
       <Sider
         className="sider"
-        breakpoint="md"
+        breakpoint="lg"
         style={{
           scrollbarWidth: "thin",
           scrollbarGutter: "stable",

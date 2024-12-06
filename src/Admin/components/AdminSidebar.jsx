@@ -20,8 +20,23 @@ import {
   FcSettings,
   FcTemplate,
   FcVoicePresentation,
+  FcViewDetails,
 } from "react-icons/fc";
 import { Tooltip } from "antd";
+
+// LearningForms ->  Ta'lim shakli (sirtqi, kunduzgi, ...)  faqat admin panel
+// EducationLanguages -> o'quv tili (rus, uzbek, ...)   faqat admin panel
+// StudentGroups ->  guruhlar )  admin panel, dekan, dekan o'rinbosari va facultycouncl uchun
+// AcademiSubject -> fanlar)  admin panel, dekan, dekan o'rinbosari va facultycouncl uchun
+// LessonTime -> dars vaqtlari (1 para 8.00 dan 9.20 gacha) faqat admin panel
+// EducationalBuilding -> universitet binolari  )  faqat admin panel
+// RoomTypes -> xona turi)  faqat admin panel
+// Rooms -> xona)  faqat admin panel
+// RangeRooms -> department uchun xona diapazoni)   admin panel va kafedra mudiri uchun
+
+// 'selected' so'zi bilan tugaydiganlar statik token orqali ishlaydi
+// 'faculty' sozi bilan tugaganlar dekan, dekan o'rinbosari va facultycouncl uchun ishlaydi
+// 'department' sozi bilan tugaydiganlar kafedra mudiri uchun ishlaydi
 
 export const admin = () => {
   const {
@@ -118,6 +133,33 @@ export const admin = () => {
       icon: <FcReadingEbook size={"25px"} />,
     },
     {
+      id: 1100,
+      label: "Teacher Daily CRUD",
+      roles: ["admin"],
+      icon: <FcViewDetails size={"25px"} />,
+      children: [
+        { label: "Gruhlar", key: "student-group" },
+        { label: "Fanlar", key: "academi-subject" },
+        { label: "Xona diapazoni", key: "range-rooms" },
+        { label: "Xonalar", key: "rooms" },
+        { label: "Dars soati", key: "lesson-time" },
+        { label: "Xona turlari", key: "room-types" },
+        { label: "O'quv binolari", key: "edu-build" },
+        { label: "Ta'lim tili", key: "edu-lang" },
+        { label: "Ta'lim shakli", key: "learning-form" },
+      ],
+    },
+    {
+      id: 1100,
+      label: "O'qituvchi kundaligi",
+      roles: ["dean", "deputydean", "facultycouncil"],
+      icon: <FcViewDetails size={"25px"} />,
+      children: [
+        { label: "Gruhlar", key: "student-group" },
+        { label: "Fanlar", key: "academi-subject" },
+      ],
+    },
+    {
       id: 10,
       label: "CRUD",
       roles: ["admin"],
@@ -137,7 +179,6 @@ export const admin = () => {
       ],
       icon: <FcList size={"25px"} />,
     },
-
     {
       id: 11,
       key: "import-doc",

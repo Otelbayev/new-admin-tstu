@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
 import Wrapper from "../../components/wrapper";
-import { Editor, Input } from "../../components/Generics";
+import { Editor } from "../../components/Generics";
 import { useLanguageContext } from "../../../context/LanguageContext";
 import LanguageSelect from "../../components/Generics/LanguageSelect";
 import { useCreate } from "./../../hooks/useCreate";
 import { useNavigate } from "react-router-dom";
+import { Col, Form, Row, Input, Button } from "antd";
+import { useTranslation } from "react-i18next";
 
 const AdditionalsCreate = ({
   title,
@@ -15,22 +17,19 @@ const AdditionalsCreate = ({
 }) => {
   const [value, setValue] = useState("uz");
   const editorRef = useRef();
-  const titleRef = useRef();
-  const descRef = useRef();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
 
   const { options } = useLanguageContext();
   const language_id = options.find((option) => option.code === value)?.id;
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
     const res = await useCreate(
       value,
       "obj",
       {
-        title: titleRef.current?.value,
-        description: descRef.current?.value,
+        title: e.title,
+        description: e.desc,
         text: $(editorRef.current)?.summernote("code")?.trim(),
       },
       `${import.meta.env.VITE_BASE_URL_API}${createUrl}`,
@@ -43,35 +42,39 @@ const AdditionalsCreate = ({
 
     if (res.statusCode === 200) {
       value === "uz"
-        ? navigate(`/admin/${path}/edit/${res.id}`)
-        : navigate(`/admin/${path}`);
+        ? navigate(`/${i18n.language}/admin/${path}/edit/${res.id}`)
+        : navigate(`/${i18n.language}/admin/${path}`);
     }
   };
   return (
     <Wrapper title={title}>
-      <form className="form-horizontal row" onSubmit={handleSubmit}>
-        <div className="col-md-12">
-          <LanguageSelect onChange={(e) => setValue(e)} />
-        </div>
-        <Input
-          ref={titleRef}
-          className="form-group col-md-2"
-          label={`Mavzu (${value})`}
-        />
-        <Input
-          ref={descRef}
-          className="form-group col-md-2"
-          label={`Izoh (${value})`}
-        />
-        <Editor ref={editorRef} className="form-group col-md-8" />
-        <div className="form-group mt-3 col-md-12">
-          <div className="col-sm-12">
-            <button type="submit" className="btn btn-success">
-              Yaratish
-            </button>
-          </div>
-        </div>
-      </form>
+      <Form layout="vertical" onFinish={handleSubmit}>
+        <Row gutter={[10, 10]}>
+          <Col span={24}>
+            <LanguageSelect onChange={(e) => setValue(e)} />
+          </Col>
+          <Col sx={24} md={7}>
+            <Form.Item name="title" label="Mavzu">
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col sx={24} md={7}>
+            <Form.Item name="desc" label="Izoh">
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col sx={24} md={10}>
+            <Form.Item label=" ">
+              <Editor ref={editorRef} />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Button type="primary" htmlType="submit">
+              yaratish
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     </Wrapper>
   );
 };

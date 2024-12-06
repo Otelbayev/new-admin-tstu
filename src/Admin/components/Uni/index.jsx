@@ -7,13 +7,9 @@ import AntdSidebar from "../AntdSidebar";
 const Uni = () => {
   return (
     <div>
-      <Layout
-
-      >
+      <Layout>
         <AntdSidebar />
-        <Layout 
-          
-        >
+        <Layout>
           <Content
             style={{
               height: "100vh",

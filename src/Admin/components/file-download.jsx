@@ -12,12 +12,8 @@ const Link = styled.a`
 
 const DownloadFile = () => {
   return (
-    <Link
-      href={downloadfile}
-      download="O'qituvchilarni baholash"
-      className="btn"
-    >
-      <FcDocument size="40px" />
+    <Link href={downloadfile} download="O'qituvchilarni baholash">
+      <FcDocument size={35} />
     </Link>
   );
 };

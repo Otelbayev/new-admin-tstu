@@ -4,8 +4,8 @@ const Portfolio = () => (
   <Additionals
     title="Portfolio"
     get="/personportfolio/getallpersonportfolioprofil"
-    del="/personportfolio/deletepersonportfolio"
-    edit="portfolio/edit"
+    del="/personportfolio/deletepersonportfolio/"
+    create="/admin/portfolio/create"
   />
 );
 

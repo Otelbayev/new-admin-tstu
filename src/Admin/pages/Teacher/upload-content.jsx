@@ -1,27 +1,36 @@
-import { ChooseFile, Input } from "../../components/Generics";
-import { message } from "antd";
-import { useEffect, useRef, useState } from "react";
+import {
+  Col,
+  Form,
+  message,
+  Row,
+  Input,
+  DatePicker,
+  Upload as U,
+  Button,
+  Typography,
+  Flex,
+  Modal,
+  Popconfirm,
+} from "antd";
+import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { NavLink } from "react-router-dom";
-import loadingGif from "../../../assets/icons/loading.gif";
 import useAxios from "../../../hooks/useAxios";
+import { FiEdit, FiEye, FiTrash, FiUploadCloud } from "react-icons/fi";
+import DataTable from "../../components/data-table";
+import { Link } from "react-router-dom";
+import dayjs from "dayjs";
 
-const Upload = ({ id, old_year, new_year, upd, max_score, score, author }) => {
-  const textRef = useRef();
-  const fileRef = useRef();
-  const dateRef = useRef();
-  const countRef = useRef();
+const { Text } = Typography;
 
-  const editTextRef = useRef();
-  const editFileRef = useRef();
-  const editDateRef = useRef();
-  const editCountRef = useRef();
-
-  const [isEdit, setIsEdit] = useState(false);
+const Upload = ({ id, old_year, new_year, upd, max_score, score }) => {
+  const [isEdit, setIsEdit] = useState(null);
   const [data, setData] = useState([]);
+  const [form] = Form.useForm();
+  const [form1] = Form.useForm();
+  const [modalId, setModalId] = useState(false);
 
-  const { sendRequest, loading, error } = useAxios();
+  const { sendRequest } = useAxios();
 
   const getData = async (id) => {
     const res = await sendRequest({
@@ -43,23 +52,17 @@ const Upload = ({ id, old_year, new_year, upd, max_score, score, author }) => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!fileRef?.current?.files[0] || !textRef.current.value) {
-      message.error("All files are required");
-      return;
-    }
-
+  const onFinish = async (e) => {
     try {
       message.loading({ key: "form", content: "Yuklanmoqda.." });
       const formData = new FormData();
       formData.append("old_year", old_year);
       formData.append("new_year", new_year);
       formData.append("document_id", id);
-      formData.append("comment", textRef?.current?.value);
-      formData.append("fixed_date", dateRef?.current?.value);
-      formData.append("number_authors", Number(countRef?.current?.value) || 0);
-      formData.append("file_up", fileRef?.current?.files[0]);
+      formData.append("comment", e.comment);
+      formData.append("fixed_date", e.date);
+      formData.append("number_authors", 0);
+      formData.append("file_up", e.file?.fileList[0]?.originFileObj);
 
       const res = await axios.post(
         `${
@@ -74,17 +77,16 @@ const Upload = ({ id, old_year, new_year, upd, max_score, score, author }) => {
             old_year,
             new_year,
             document_id: id,
-            comment: textRef?.current?.value,
-            fixed_date: dateRef?.current?.value,
-            number_authors: countRef?.current?.value,
+            comment: e.comment,
+            fixed_date: e.date,
+            number_authors: 0,
           },
         }
       );
 
       if (res.status === 200) {
         message.success({ key: "form", content: "Muvofaqiyatli yuklandi!" });
-        textRef.current.value = "";
-        fileRef.current.value = "";
+        form.resetFields();
         getData(id);
       }
     } catch (err) {
@@ -92,30 +94,21 @@ const Upload = ({ id, old_year, new_year, upd, max_score, score, author }) => {
     }
   };
 
-  const onSave = async (key) => {
-    if (!editTextRef.current?.value) {
-      message.error("All files are required");
-      return;
-    }
+  const onSave = async (e) => {
     try {
       message.loading({ key: "error", content: "Loading!" });
-
       const formData = new FormData();
       formData.append("old_year", Number(old_year));
       formData.append("new_year", Number(new_year));
       formData.append("document_id", Number(id));
-      formData.append("comment", editTextRef?.current?.value);
-      formData.append("fixed_date", editDateRef?.current?.value);
-      formData.append(
-        "number_authors",
-        Number(editCountRef?.current?.value) || 0
-      );
-      formData.append("file_up", editFileRef?.current?.files[0]);
-
+      formData.append("comment", e.comment);
+      formData.append("fixed_date", e.date);
+      formData.append("number_authors", 0);
+      formData.append("file_up", e.file?.fileList[0]?.originFileObj);
       const res = await axios.put(
         `${
           import.meta.env.VITE_BASE_URL_API
-        }/documentteacher110setcontroller/updatedocumentteacher110set/${key}`,
+        }/documentteacher110setcontroller/updatedocumentteacher110set/${isEdit}`,
         formData,
         {
           headers: {
@@ -125,20 +118,21 @@ const Upload = ({ id, old_year, new_year, upd, max_score, score, author }) => {
             old_year,
             new_year,
             document_id: id,
-            comment: editTextRef?.current?.value,
-            fixed_date: editDateRef?.current?.value,
-            number_authors: editCountRef?.current?.value,
+            comment: e.comment,
+            fixed_date: e.date,
+            number_authors: 0,
           },
         }
       );
 
       if (res.status === 200) {
-        setIsEdit(false);
         message.success({
           key: "error",
           content: "Muvofaqiyatli o'zgartirildi!",
         });
         getData(id);
+        setIsEdit(null);
+        form1.resetFields();
       }
     } catch (err) {
       message.error({ key: "error", content: "Xatolik!" });
@@ -162,233 +156,201 @@ const Upload = ({ id, old_year, new_year, upd, max_score, score, author }) => {
     }
   };
 
+  const onEdit = (id) => {
+    setIsEdit(id);
+    const oldData = data.find((e) => e.id === id);
+    form1.setFieldsValue({
+      comment: oldData.comment,
+      date: dayjs(oldData.fixed_date),
+    });
+  };
+
   useEffect(() => {
     getData(id);
   }, [upd]);
 
+  const cols = [
+    { title: "#", dataIndex: "index", width: 10 },
+    { title: "Izoh", dataIndex: "comment" },
+    {
+      title: "Holati",
+      fixed: "right",
+      render: function (item) {
+        return item?.score ? (
+          <Text type="success">Tasdiqlangan</Text>
+        ) : item.rejection ? (
+          <Flex gap="10px" align="center">
+            <Text type="danger">Rad etildi</Text>
+            <Button onClick={() => setModalId(item.id)}>Izoh...</Button>
+            <Modal
+              title="Izoh"
+              onCancel={() => setModalId(null)}
+              open={item.id === modalId}
+              okButtonProps={{
+                style: {
+                  display: "none",
+                },
+              }}
+              cancelButtonProps={{
+                style: {
+                  display: "none",
+                },
+              }}
+            >
+              {item.reason_for_rejection || "Rad etilgan"}
+            </Modal>
+          </Flex>
+        ) : (
+          <Text>Jarayonda</Text>
+        );
+      },
+    },
+    { title: "Ball", dataIndex: "score" },
+    { title: "Sana", dataIndex: "date" },
+    {
+      title: "Tahrirlash",
+      render: function (data) {
+        return (
+          <Flex gap="5px">
+            <Button
+              style={{ width: "50px" }}
+              onClick={() => onEdit(data.id)}
+              icon={<FiEdit size={20} />}
+            />
+            <Link
+              target="_blank"
+              to={`${import.meta.env.VITE_BASE_URL_IMG}${data.file}`}
+            >
+              <Button
+                type="primary"
+                style={{ width: "50px" }}
+                icon={<FiEye size={20} />}
+              />
+            </Link>
+            {data.score || data.score === 0 ? null : (
+              <Popconfirm
+                title="Tasdiqlang"
+                description="Bu vazifani oʻchirib tashlaysizmi?"
+                onConfirm={() => onDel(data.id)}
+                okText="Yes"
+                cancelText="No"
+              >
+                <Button
+                  danger
+                  type="primary"
+                  style={{ width: "50px" }}
+                  icon={<FiTrash size={20} />}
+                />
+              </Popconfirm>
+            )}
+            <Modal
+              open={data.id === isEdit}
+              onCancel={() => setIsEdit(null)}
+              footer={false}
+            >
+              <Form layout="vertical" onFinish={onSave} form={form1}>
+                <Row gutter={[10, 10]}>
+                  <Col xs={24}>
+                    <Form.Item
+                      rules={[{ required: true, message: "Izoh kiriting!" }]}
+                      name="comment"
+                    >
+                      <Input placeholder="Izoh" />
+                    </Form.Item>
+                  </Col>
+                  <Col xs={24}>
+                    <Form.Item
+                      rules={[{ required: true, message: "Sana kiriting!" }]}
+                      name="date"
+                    >
+                      <DatePicker
+                        placeholder="Sana"
+                        style={{ width: "100%" }}
+                      />
+                    </Form.Item>
+                  </Col>
+                  <Col xs={24}>
+                    <Form.Item name="file">
+                      <U beforeUpload={() => false} maxCount={1}>
+                        <Button icon={<FiUploadCloud />}>Yuklash</Button>
+                      </U>
+                    </Form.Item>
+                  </Col>
+                  <Col>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      style={{ width: "100%" }}
+                    >
+                      Yangliash
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </Modal>
+          </Flex>
+        );
+      },
+    },
+  ];
+
+  const dataSource = useMemo(() => {
+    return data.map((e, index) => ({
+      index: index + 1,
+      id: e.id,
+      comment: e.comment,
+      date: e.fixed_date.split("T")[0],
+      score: e.score,
+      rejection: e.rejection,
+      reason_for_rejection: e.reason_for_rejection,
+      file: e?.file_?.url,
+    }));
+  }, [data]);
+
   return (
     <div>
       {max_score > score && id !== 89 && (
-        <form className="row" onSubmit={handleSubmit}>
-          <Input
-            ref={textRef}
-            placeholder="Izoh"
-            className="form-group col-md-4"
-          />
-          <Input ref={dateRef} type="date" className="form-group col-md-2" />
-          {author && (
-            <Input
-              ref={countRef}
-              placeholder="Mualliflar soni"
-              type="number"
-              className="form-group col-md-2"
-            />
-          )}
-          <ChooseFile
-            ref={fileRef}
-            className={author ? "form-group col-md-3" : "form-group col-md-4"}
-          />
-          <div
-            className={author ? "form-group col-md-1" : "form-group col-md-2"}
-          >
-            <button className="btn btn-primary w-100" type="submit">
-              Yuklash
-            </button>
-          </div>
-        </form>
+        <Form onFinish={onFinish} form={form}>
+          <Row gutter={[10, 10]}>
+            <Col xs={24} md={6}>
+              <Form.Item
+                rules={[{ required: true, message: "Izoh kiriting!" }]}
+                name="comment"
+              >
+                <Input placeholder="Izoh" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                rules={[{ required: true, message: "Sana kiriting!" }]}
+                name="date"
+              >
+                <DatePicker placeholder="Sana" style={{ width: "100%" }} />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Form.Item
+                rules={[{ required: true, message: "Fayl kiriting!" }]}
+                name="file"
+              >
+                <U beforeUpload={() => false} maxCount={1}>
+                  <Button icon={<FiUploadCloud />}>Yuklash</Button>
+                </U>
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={6}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                style={{ width: "100%" }}
+              >
+                Yuklash
+              </Button>
+            </Col>
+          </Row>
+        </Form>
       )}
-
-      {data?.length ? (
-        <table
-          width={"100%"}
-          border="1"
-          style={{ borderColor: "lightgray", textAlign: "center" }}
-        >
-          <thead>
-            <tr>
-              <th className="py-2">Izoh</th>
-              <th className="py-2">Holati</th>
-              <th className="py-2">Ball</th>
-              <th className="py-2">Sana</th>
-              {author && <th className="py-2">Mualliflar soni</th>}
-              <th className="py-2">Tahrirlash</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data
-              .sort((a, b) => a.id - b.id)
-              .map((item) => (
-                <>
-                  <tr key={item?.id}>
-                    <td>
-                      {item.id === isEdit ? (
-                        <Input defaultValue={item.comment} ref={editTextRef} />
-                      ) : (
-                        item.comment
-                      )}
-                    </td>
-                    {item.id === isEdit ? (
-                      <td colSpan={2}>
-                        <ChooseFile ref={editFileRef} />
-                      </td>
-                    ) : (
-                      <td style={{ width: "20%" }}>
-                        {item.score ? (
-                          <p className="text-success">Tasdiqlangan</p>
-                        ) : item.rejection ? (
-                          <div class="d-flex justify-content-center align-items-center">
-                            <p class="text-danger my-0 mx-3">Rad etildi</p>
-                            <a
-                              className="btn btn-outline-primary py-1 px-2"
-                              data-toggle="modal"
-                              data-target={`#exampleModal${item.id}`}
-                            >
-                              Izoh...
-                            </a>
-                          </div>
-                        ) : (
-                          <p className="text-primary">Jarayonda</p>
-                        )}
-                      </td>
-                    )}
-                    {item.id !== isEdit && (
-                      <td style={{ width: "10%" }}>{item?.score}</td>
-                    )}
-                    <td style={{ width: "15%" }}>
-                      {item.id === isEdit ? (
-                        <Input
-                          ref={editDateRef}
-                          defaultValue={item.fixed_date?.split("T")[0]}
-                          type="date"
-                        />
-                      ) : (
-                        item.fixed_date?.split("T")[0]
-                      )}
-                    </td>
-                    {author && (
-                      <td style={{ width: "15%" }}>
-                        {item.id === isEdit ? (
-                          <Input
-                            defaultValue={item.number_authors}
-                            ref={editCountRef}
-                          />
-                        ) : (
-                          item.number_authors
-                        )}
-                      </td>
-                    )}
-                    <td style={{ width: "15%" }}>
-                      {isEdit === item.id && (
-                        <button
-                          onClick={() => onSave(item.id)}
-                          className="btn btn-success m-1"
-                        >
-                          <i className="fa-solid fa-check"></i>
-                        </button>
-                      )}
-                      {isEdit === item.id && (
-                        <button
-                          onClick={() => setIsEdit(null)}
-                          className="btn btn-danger m-1"
-                        >
-                          <i className="fa-solid fa-x"></i>
-                        </button>
-                      )}
-                      {item.id !== isEdit && (
-                        <NavLink
-                          target="_blank"
-                          to={`${import.meta.env.VITE_BASE_URL_IMG}${
-                            item?.file_?.url
-                          }`}
-                          className={"btn btn-secondary my-1"}
-                        >
-                          <i className="fa-solid fa-file"></i>
-                        </NavLink>
-                      )}
-                      {item.id !== isEdit && !item.score && (
-                        <button
-                          onClick={() => setIsEdit(item.id)}
-                          className="btn btn-primary m-1"
-                        >
-                          <i className="fa-solid fa-edit"></i>
-                        </button>
-                      )}
-                      {item.id !== isEdit && !item.score && (
-                        <button
-                          onClick={() => onDel(item.id)}
-                          className="btn btn-danger"
-                        >
-                          <i className="fa-solid fa-trash"></i>
-                        </button>
-                      )}
-                    </td>
-                  </tr>
-                  <div
-                    className="modal fade"
-                    id={`exampleModal${item.id}`}
-                    tabIndex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLabel">
-                            Rad edilgan
-                          </h5>
-                          <button
-                            type="button"
-                            className="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          {item.reason_for_rejection || "Rad etilgan"}
-                        </div>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-dismiss="modal"
-                          >
-                            Yopish
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              ))}
-          </tbody>
-        </table>
-      ) : (
-        <table className="display responsive table w-100">
-          <tbody>
-            <tr>
-              <td colSpan={10} className="text-center">
-                {loading ? (
-                  <div>
-                    <img
-                      loading="lazy"
-                      style={{ width: "50px" }}
-                      src={loadingGif}
-                      alt=""
-                    />
-                  </div>
-                ) : error ? (
-                  "Error"
-                ) : (
-                  "Ma'lumot yo'q"
-                )}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      )}
+      <DataTable cols={cols} dataSource={dataSource} noAction={true} />
     </div>
   );
 };

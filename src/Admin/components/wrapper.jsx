@@ -14,6 +14,7 @@ const Wrapper = ({
   back,
   onMaqsadClick,
   create,
+  header,
 }) => {
   const navigate = useNavigate();
   const { i18n } = useTranslation();
@@ -87,6 +88,7 @@ const Wrapper = ({
             </Row>
           </Form>
         )}
+        {header ? header : ""}
         {children}
       </Card>
     </div>
